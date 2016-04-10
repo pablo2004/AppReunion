@@ -1,0 +1,102 @@
+<form data-model="Convocatoria" data-validation="true" class="form-horizontal" id="ConvocatoriaConvocar" onsubmit="return false;" method="POST" action="{{URL}}convocatorias/apiAlta/?particion_id={{PARTICION_ID}}&api={{API_KEY}}">
+
+     <div class="form-group">
+          <label for="ConvocarUsuarioId" class="col-lg-2 form-label">Convoca</label>
+          <div class="col-lg-10">
+               <select id="ConvocarUsuarioId" name="usuario_id" class="form-control on-init" data-function="setOptionRemote" data-selector="#ConvocarUsuarioId" data-label="nombre" data-url="{{URL}}usuarios/apiUsuarios/?particion_id={{PARTICION_ID}}&api={{API_KEY}}&rol=Empleado"></select>
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarUsuarioIdError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarProyectoId" class="col-lg-2 form-label">Proyecto</label>
+          <div class="col-lg-10">
+               <select id="ConvocarProyectoId" name="proyecto_id" class="form-control on-init" data-function="setOptionRemote" data-selector="#ConvocarProyectoId" data-type="array" data-url="{{URL}}convocatorias/apiProyectos/?particion_id={{PARTICION_ID}}&api={{API_KEY}}"></select>
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarProyectoIdError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarTipoId" class="col-lg-2 form-label">Tipo</label>
+          <div class="col-lg-10">
+               <select id="ConvocarTipoId" name="tipo_id" class="form-control on-init" data-function="setOptionRemote" data-selector="#ConvocarTipoId" data-type="array" data-url="{{URL}}catalogos/apiCatalogo/TipoConvocatoria/?particion_id={{PARTICION_ID}}&api={{API_KEY}}"></select>
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarTipoIdError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarEstatusId" class="col-lg-2 form-label">Estatus</label>
+          <div class="col-lg-10">
+               <select id="ConvocarEstatusId" name="estatus_id" class="form-control on-init" data-function="setOptionRemote" data-selector="#ConvocarEstatusId" data-type="array" data-url="{{URL}}catalogos/apiCatalogo/EstatusConvocatoria/?particion_id={{PARTICION_ID}}&api={{API_KEY}}"></select>
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarEstatusIdError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarNombre" class="col-lg-2 form-label">Nombre</label>
+          <div class="col-lg-10">
+               <input type="text" id="ConvocarNombre" name="nombre" class="form-control" placeholder="Nombre" />
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarNombreError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarObjetivos" class="col-lg-2 form-label">Objetivos</label>
+          <div class="col-lg-10">
+               <textarea id="ConvocarObjetivos" name="objetivos" class="form-control" placeholder="Objetivos"></textarea>
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarObjetivosError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarTemas" class="col-lg-2 form-label">Temas</label>
+          <div class="col-lg-10">
+               <textarea id="ConvocarTemas" name="temas" class="form-control" placeholder="Temas"></textarea>
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarTemasError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarFecha" class="col-lg-2 form-label">Fecha</label>
+          <div class="col-lg-10">
+               <input type="text" id="ConvocarFecha" name="fecha" class="form-control date-picker" placeholder="Fecha" />
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarFechaError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarHoraInicio" class="col-lg-2 form-label">Hora de Inicio Programada</label>
+          <div class="col-lg-10">
+               <input type="text" id="ConvocarHoraInicio" name="hora_inicio" class="form-control time-picker" placeholder="Hora de Inicio" />
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarHoraInicioError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarHoraTermino" class="col-lg-2 form-label">Hora de Termino Programada</label>
+          <div class="col-lg-10">
+               <input type="text" id="ConvocarHoraTermino" name="hora_termino" class="form-control time-picker" placeholder="Hora de Termino" />
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarHoraTerminoError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarLugar" class="col-lg-2 form-label">Lugar</label>
+          <div class="col-lg-10">
+               <input type="text" id="ConvocarLugar" name="lugar" class="form-control" placeholder="Lugar" />
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarLugarError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="ConvocarAlertaId" class="col-lg-2 form-label">Alerta</label>
+          <div class="col-lg-10">
+               <select id="ConvocarAlertaId" name="alerta_id" class="form-control on-init" data-function="setOptionRemote" data-selector="#ConvocarAlertaId" data-type="array" data-url="{{URL}}catalogos/apiCatalogo/TipoAlerta/?particion_id={{PARTICION_ID}}&api={{API_KEY}}"></select>
+          </div>
+          <div class="form-error alert alert-danger" id="ConvocarAlertaIdError"></div>
+     </div>
+
+
+     <button data-controller="Reunion" data-action="convocar" data-id="#ConvocatoriaConvocar" type="submit" class="ajax-form btn btn-positive btn-block"><i class="fa fa-check"></i> Guardar</button>
+
+</form>

@@ -1,0 +1,27 @@
+<form data-model="Reunion" data-validation="true" class="form-horizontal" id="ReunionArchivos" onsubmit="return false;" method="POST" action="{{URL}}archivos/apiAlta/?particion_id={{PARTICION_ID}}&api={{API_KEY}}">
+
+     <input id="ReunionParticionId" name="particion_id" value="0" type="hidden" />
+     <input id="ReunionPadreId" name="padre_id" value="0" type="hidden" />
+     <input id="ReunionTipoId" name="tipo_id" value="0" type="hidden" />
+     <input id="ReunionUsuarioId" name="usuario_id" value="0" type="hidden" />
+     <input id="ReunionCompromisoId" name="compromiso_id" value="0" type="hidden" />
+
+     <div id="ReunionMensaje" class="block block-orange"><i class="fa fa-info"></i> Justificar con evidencia.</div>
+
+
+     <div class="form-element">
+          <label class="form-label" for="ReunionDescripcion">Descripcion</label>
+          <textarea class="form-control" id="ReunionDescripcion" name="descripcion" placeholder="Descripcion"></textarea>
+          <div class="form-error" id="ReunionDescripcionError"></div>
+     </div>
+
+     <div class="form-element">
+          <textarea class="hide" id="ReunionImagen" name="imagen"></textarea>
+          <div class="form-error" id="ReunionImagenError"></div>
+     </div>
+     
+     <button data-controller="Reunion" data-action="archivos" data-id="#ReunionArchivos" type="submit" class="ajax-form btn btn-positive btn-block"><i class="fa fa-check"></i> Guardar</button>
+
+     <button id="ReunionFoto" type="button" class="btn btn-primary btn-block"><i class="fa fa-camera"></i> Tomar Foto</button>
+
+</form>

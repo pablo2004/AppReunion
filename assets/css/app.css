@@ -1,0 +1,125 @@
+body {
+     background-color: #F2F2F2;
+}
+
+#content {
+    padding-top: 80px;
+}
+
+.hidden-block {
+    display: none;
+}
+
+.time-picker-container {
+    width: 100%;
+    height: 50px;
+}
+
+.time-picker-hour {
+}
+
+.time-picker-minute {
+}
+
+.time-picker-separator {
+    border: 0;
+    width: 10%;
+    font: bold 30px 'Titillium Web';
+}
+
+.form-horizontal .form-error {
+    display: none;
+    clear: both;
+}
+
+.form-horizontal .form-label {
+    font-size: 18px;
+}
+
+.side-bar-background {
+    background-color: #585858;
+    opacity: 0.9;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9990;
+    display: none;
+}
+
+
+.side-bar {
+    display: none;
+    margin: 0px;
+    padding: 0px; 
+    z-index: 9999;
+    width: 70%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: #f2f2f2;
+    border-right: solid 1px #585858;
+}
+
+.side-bar a {
+    color: #6E6E6E;
+}
+
+.side-bar a:hover > i {
+    color: #3097d1;
+}
+
+.side-bar .element {
+    padding-left: 20px;
+    text-align: left;
+    margin-top: 0px; 
+    padding-top: 10px;
+    font: normal 20px 'Titillium Web';
+    width: 100%;
+    height: 50px;
+    color: #151515;
+    margin-bottom: 0px;
+    border-bottom: solid 1px #E6E6E6;
+}
+
+.text-center {
+     text-align: center;
+}
+
+.btn, .alert {
+     border-radius: 0px; 
+}
+
+.app-center { 
+     margin-right: auto !important;
+     margin-left: auto !important;
+}
+
+.dialog {
+    z-index: 100000;
+    top:0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.dialog .dialog-content {
+    font: normal 20px 'Titillium Web';
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #424242;
+}
+
+.dialog-buttons {
+    padding-top: 20px;
+    border-top: solid 1px #E6E6E6;
+}
+
+.dialog .btn {
+    padding: 10px;
+    font-size: 16px;
+    min-width: 120px;
+    margin-left: 5px;
+}

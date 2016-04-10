@@ -1,0 +1,22 @@
+<form data-model="Reunion" data-validation="false" class="form-horizontal" id="ReunionAcceso" onsubmit="return false;" method="POST" action="{{URL}}usuarios/apiAcceso/?particion_id={{PARTICION_ID}}&api={{API_KEY}}&rol=Empleado">
+
+
+     <div class="form-group">
+          <label for="UsuarioId" class="col-lg-2 form-label">Usuario</label>
+          <div class="col-lg-10">
+               <select id="UsuarioId" name="usuario_id" class="form-control on-init" data-function="setOptionRemote" data-selector="#UsuarioId" data-label="nombre" data-url="{{URL}}usuarios/apiUsuarios/?particion_id={{PARTICION_ID}}&api={{API_KEY}}&rol=Empleado"></select>
+          </div>
+          <div class="form-error alert alert-danger" id="UsuarioIdError"></div>
+     </div>
+
+     <div class="form-group">
+          <label for="UsuarioPassword" class="col-lg-2 form-label">Password</label>
+          <div class="col-lg-10">
+               <input class="form-control" id="UsuarioPassword" name="password" value="" type="password" placeholder="Password" />
+          </div>
+          <div class="form-error alert alert-danger" id="UsuarioPasswordError">asd</div>
+     </div>
+     
+     <button data-controller="Reunion" data-action="acceso" data-id="#ReunionAcceso" type="submit" class="ajax-form btn btn-success btn-lg col-md-12 col-xs-12"><i class="fa fa-check"></i> Acceder</button>
+
+</form>

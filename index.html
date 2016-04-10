@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/font.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/app.css" />
+
+        <script type="text/javascript">
+        var models = {}
+        </script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="assets/js/hammer.min.js"></script>
+        <script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="assets/js/moment.min.js"></script>
+        <script type="text/javascript" src="assets/js/app.js"></script>
+        
+        <script type="text/javascript" src="Modelo/Reunion.js"></script>
+        <script type="text/javascript" src="Modelo/Convocatoria.js"></script>
+        <script type="text/javascript" src="Controlador/Sistema.js"></script>
+        <script type="text/javascript" src="Controlador/Reunion.js"></script>
+
+        <title>Reunion</title>
+
+    </head>
+    <body id="body">
+
+       <div id="side-bar-background" class="side-bar-background"></div>
+       <div id="side-bar" class="side-bar">
+       
+            <div class="element">
+            <a class="side-bar-toggle" href="#"><i class="fa fa-bars"></i> Menú</a>
+            </div>
+
+            <div id="irConvocar" class="element hidden-block">
+            <a href="/Reunion/convocar" class="route-link"><i class="fa fa-calendar-check-o"></i> Convocar</a>
+            </div>
+
+            <div id="irCompromisos" class="element hidden-block">
+            <a href="/Reunion/compromisos" class="route-link"><i class="fa fa-tasks"></i> Mis Compromisos</a>
+            </div>
+
+            <div id="irConvocatorias" class="element hidden-block">
+            <a href="/Reunion/convocatorias" class="route-link"><i class="fa fa-calendar"></i> Mis Reuniones</a>
+            </div>
+
+            <div id="irProductividad" class="element hidden-block">
+            <a href="/Reunion/productividad" class="route-link"><i class="fa fa-line-chart"></i> Mis Productividad</a>
+            </div>
+
+            <div class="element">
+            <a href="/Sistema/actualizar" class="route-link"><i class="fa fa-cogs"></i> Actualizaci&oacute;n</a>
+            </div>
+
+            <div id="irCierreSesion" class="element">
+            <a href="/Reunion/index" class="route-link"><i class="fa fa-power-off"></i> Cerrar Sesion</a>
+            </div>
+
+       </div>
+
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle pull-left collapsed side-bar-toggle" data-toggle="collapse" data-target="#side-bar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><i class="fa fa-group"></i> Reunion</a>
+        </div>
+        
+      </div>
+    </nav>
+
+
+       <div class="container">
+            <div id="content">
+            </div>
+       </div>
+
+       <script type="text/javascript"> 
+            var router = null;
+           
+
+            document.addEventListener("deviceready", function(){
+
+                readJSON("dataApp").always(function(){
+                     loaderShow('<i class="fa fa-gear fa-spin"></i> Cargando Configuraci&oacute;n');
+                }).then(function(json){
+
+                     if(json !== undefined){
+                          dataApp = $.parseJSON(json);
+                          configApp['PARTICION_ID'] = dataApp['PARTICION_ID'];
+                          configApp['API_KEY'] = dataApp['API_KEY'];
+                     }
+
+                     loaderHide();
+                }).fail(function(){
+                     loaderHide();
+                     router = new Router($('#content'), $(document), {"eventSelector": '.route-link', "defaultRoute": "/Sistema/configura/"});
+                     router.start();
+                }).done(function(){
+                    router = new Router($('#content'), $(document), {"eventSelector": '.route-link', "defaultRoute": "/Reunion/index/"});
+                    router.start();
+                });
+
+            }, false);
+
+            if(!window['cordova']){
+                 push = {
+                      unregister: function(call1, call2){
+                           call1();
+                      }
+                 }
+                 configApp['PARTICION_ID'] = 1;
+                 configApp['API_KEY'] = '';
+                 router = new Router($('#content'), $(document), {"eventSelector": '.route-link', "defaultRoute": "/Reunion/index/"});
+                 router.start();
+            }
+
+            var showSideBar = function(){
+                 $('#side-bar').show();
+                 $('#side-bar-background').show();
+            };
+
+            var hideSideBar = function(){
+                 $('#side-bar').hide();
+                 $('#side-bar-background').hide();
+            };
+
+            $(document).on("ready", function(){
+
+               $('#side-bar-background').click(function(){
+                    hideSideBar();
+               });
+
+               $('.side-bar-toggle').click(function(e){
+                    e.preventDefault();
+                    sideBar = $('#side-bar');
+                    if(sideBar.is(':visible')){
+                        hideSideBar();
+                    }
+                    else{
+                        showSideBar();
+                    }
+               });
+               
+               Hammer(document.getElementById('body')).on("swiperight", function() {
+                   showSideBar();
+               });
+               Hammer(document.getElementById('body')).on("swipeleft", function() {
+                   hideSideBar();
+               });
+
+            });
+       </script>
+
+    </body>
+</html>
